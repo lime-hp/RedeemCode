@@ -4,15 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Heartopia Exchange Codes</title>
+<title>Heartopia Redeem Codes</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -20,227 +18,135 @@
 }
 
 body{
-
     font-family:"M PLUS Rounded 1c",sans-serif;
-
-    background:
-    radial-gradient(circle at 20% 20%,#ffffff99 0 6px,transparent 7px),
-    radial-gradient(circle at 80% 35%,#ffffff99 0 5px,transparent 6px),
-    radial-gradient(circle at 60% 80%,#ffffff99 0 8px,transparent 9px),
-    linear-gradient(#EAF8FF,#F7FCFF);
-
-    color:#456070;
+    background:linear-gradient(180deg,#EAF8FF,#F9FDFF);
+    color:#486574;
     min-height:100vh;
-    padding:28px 18px;
+    padding:24px 16px;
 }
 
 .container{
-
-    max-width:560px;
+    max-width:700px;
     margin:auto;
-
 }
 
 h1{
-
-    color:#58AEE8;
+    color:#59AFE8;
     text-align:center;
-    font-size:34px;
-
+    font-size:2rem;
 }
 
 .subtitle{
-
-    margin-top:8px;
     text-align:center;
-    color:#6A8796;
-    line-height:1.7;
-
+    margin-top:10px;
+    color:#6C8898;
+    line-height:1.6;
 }
 
 .expire{
-
-    margin-top:20px;
-
+    margin:22px auto;
     background:#FFF7E7;
-
-    color:#C58527;
-
+    color:#C9892A;
     border-radius:18px;
-
     padding:14px;
-
     text-align:center;
-
     font-weight:bold;
-
 }
 
-.copyall{
-
-    margin:22px 0;
-
-    width:100%;
-
-    border:none;
-
-    background:#83CCFF;
-
-    color:white;
-
-    font-size:18px;
-
-    border-radius:18px;
-
-    padding:15px;
-
-    cursor:pointer;
-
-    transition:.2s;
-
-}
-
-.copyall:hover{
-
-background:#69BDF6;
-
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
 }
 
 .card{
-
-    background:white;
-
-    border-radius:22px;
-
-    padding:18px;
-
-    margin:14px 0;
-
+    border:2px solid #D7F0FF;
+    background:#fff;
+    border-radius:18px;
+    padding:18px 10px;
+    text-align:center;
     cursor:pointer;
-
+    box-shadow:0 6px 18px rgba(96,173,225,.18);
     transition:.15s;
-
-    box-shadow:0 8px 22px rgba(120,180,220,.18);
-
+    user-select:none;
 }
 
 .card:hover{
-
-transform:translateY(-3px);
-
+    transform:translateY(-2px);
+    background:#F7FCFF;
 }
 
 .card:active{
-
-transform:scale(.97);
-
+    transform:scale(.97);
 }
 
 .code{
-
     font-family:"JetBrains Mono",monospace;
-
-    font-size:19px;
-
-    word-break:break-all;
-
-}
-
-.tap{
-
-margin-top:10px;
-
-color:#72BDF1;
-
-font-size:14px;
-
+    font-size:14px;
+    font-weight:500;
+    word-break:break-word;
 }
 
 .toast{
-
-position:fixed;
-
-top:20px;
-
-left:50%;
-
-transform:translateX(-50%);
-
-background:#58AEE8;
-
-color:white;
-
-padding:12px 22px;
-
-border-radius:999px;
-
-font-weight:bold;
-
-opacity:0;
-
-transition:.25s;
-
-pointer-events:none;
-
-z-index:99;
-
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#58AEE8;
+    color:white;
+    padding:12px 20px;
+    border-radius:999px;
+    opacity:0;
+    transition:.25s;
+    pointer-events:none;
+    z-index:999;
 }
 
 .toast.show{
-
-opacity:1;
-
-top:35px;
-
+    opacity:1;
+    top:35px;
 }
 
 .footer{
-
-margin-top:30px;
-
-text-align:center;
-
-font-size:13px;
-
-color:#7C97A6;
-
+    text-align:center;
+    margin-top:28px;
+    color:#8BA4B2;
+    font-size:13px;
 }
 
+@media (max-width:420px){
+
+    .code{
+        font-size:12px;
+    }
+
+}
 </style>
 </head>
 
 <body>
 
-<div class="toast" id="toast">🩵 コピーしました！</div>
+<div class="toast" id="toast">
+✅ コピーしました！
+</div>
 
 <div class="container">
 
 <h1>🎁 Exchange Codes</h1>
 
 <div class="subtitle">
-
-Heartopia<br>
 タップするだけでコピーできます
-
 </div>
 
 <div class="expire">
-
 ⏰ 有効期限<br>
 2026/8/1 5:59 (JST)
-
 </div>
 
-<button class="copyall" onclick="copyAll()">
-📋 すべてコピー
-</button>
-
-<div id="codes"></div>
+<div class="grid" id="grid"></div>
 
 <div class="footer">
-
 Made with 🩵 for Heartopia Players
-
 </div>
 
 </div>
@@ -248,7 +154,6 @@ Made with 🩵 for Heartopia Players
 <script>
 
 const codes=[
-
 "180daysjoy",
 "callofwhales0709",
 "oceanguardians",
@@ -262,59 +167,34 @@ const codes=[
 "halfyear180",
 "r4k9q1a5m6",
 "together180"
-
 ];
 
-const area=document.getElementById("codes");
+const grid=document.getElementById("grid");
 
 codes.forEach(code=>{
 
 const card=document.createElement("div");
-
 card.className="card";
 
-card.innerHTML=`
-<div class="code">${code}</div>
-<div class="tap">📋 タップしてコピー</div>
-`;
+card.innerHTML=`<div class="code">${code}</div>`;
 
-card.onclick=()=>copy(code);
+card.onclick=async()=>{
 
-area.appendChild(card);
+await navigator.clipboard.writeText(code);
 
-});
+const toast=document.getElementById("toast");
 
-async function copy(text){
-
-await navigator.clipboard.writeText(text);
-
-showToast();
-
-}
-
-async function copyAll(){
-
-await navigator.clipboard.writeText(codes.join("\n"));
-
-showToast("📋 すべてコピーしました！");
-
-}
-
-function showToast(msg="🩵 コピーしました！"){
-
-const t=document.getElementById("toast");
-
-t.textContent=msg;
-
-t.classList.add("show");
+toast.classList.add("show");
 
 setTimeout(()=>{
-
-t.classList.remove("show");
-
+toast.classList.remove("show");
 },1500);
 
-}
+};
+
+grid.appendChild(card);
+
+});
 
 </script>
 
