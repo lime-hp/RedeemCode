@@ -2,247 +2,145 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Heartopia Redeem Codes</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700&display=swap" rel="stylesheet">
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
+*{box-sizing:border-box}
 body{
-    font-family:"M PLUS Rounded 1c",sans-serif;
-    background:linear-gradient(180deg,#EAF8FF,#F9FDFF);
-    color:#486574;
-    min-height:100vh;
-    padding:24px 16px;
-}
-
-.container{
-    max-width:700px;
-    margin:auto;
-}
-
-h1{
-    color:#59AFE8;
-    text-align:center;
-    font-size:2rem;
-}
-
-.subtitle{
-    text-align:center;
-    margin-top:10px;
-    color:#6C8898;
-    line-height:1.6;
-}
-
-.expire{
-    margin:22px auto;
-    background:#FFF7E7;
-    color:#C9892A;
-    border-radius:18px;
-    padding:14px;
-    text-align:center;
-    font-weight:bold;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:14px;
-}
-
-.section{
-    margin-top:24px;
-}
-
-.section-title{
-    color:#59AFE8;
-    font-weight:700;
-    font-size:16px;
-    margin-bottom:12px;
-    padding-left:4px;
-}
-
-.card{
-    border:2px solid #D7F0FF;
-    background:#fff;
-    border-radius:18px;
-    padding:18px 10px;
-    text-align:center;
-    cursor:pointer;
-    box-shadow:0 6px 18px rgba(96,173,225,.18);
-    transition:.15s;
-    user-select:none;
-}
-
-.card:hover{
-    transform:translateY(-2px);
-    background:#F7FCFF;
-}
-
-.card:active{
-    transform:scale(.97);
-}
-
-.code{
-    font-family:"JetBrains Mono",monospace;
-    font-size:14px;
-    font-weight:500;
-    word-break:break-word;
-}
-
-.toast{
-    position:fixed;
-    top:20px;
-    left:50%;
-    transform:translateX(-50%);
-    background:#58AEE8;
-    color:white;
-    padding:12px 20px;
-    border-radius:999px;
-    opacity:0;
-    transition:.25s;
-    pointer-events:none;
-    z-index:999;
-}
-
-.toast.show{
-    opacity:1;
-    top:35px;
-}
-
-.footer{
-    text-align:center;
-    margin-top:28px;
-    color:#8BA4B2;
-    font-size:13px;
-}
-
-.divider{
-    border:none;
-    border-top:2px dashed #CFEFFF;
-    margin:28px 0;
-}
-
-@media (max-width:420px){
-
-    .code{
-        font-size:12px;
-    }
-
-}
+  margin:0;padding:24px 16px;font-family:"M PLUS Rounded 1c",sans-serif;color:#486574;min-height: 100vh;background: linear-gradient(180deg, #EAF8FF, #F9FDFF);background-attachment: fixed;}
+.container{max-width:760px;margin:auto}
+h1{text-align:center;color:#59AFE8;margin:0}
+.sub{text-align:center;color:#6c8898;margin:8px 0 18px}
+.panel{background:#fff;border:2px solid #D7F0FF;border-radius:18px;box-shadow:0 6px 18px rgba(96,173,225,.15);padding:14px 16px;margin-bottom:20px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.row+.row{margin-top:12px}
+select{width:100%;padding:10px 14px;border:2px solid #D7F0FF;border-radius:14px;background:#F7FCFF;font:inherit;color:#486574;appearance:none}
+.selectwrap{position:relative;flex:1}.selectwrap:after{content:"⌄";position:absolute;right:14px;top:8px;font-size:22px;color:#59AFE8;pointer-events:none}
+.count{font-weight:700}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.card{position:relative;background:#fff;border:2px solid #D7F0FF;border-radius:18px;padding:20px 10px;min-height:86px;display:flex;flex-direction:column;justify-content:center;align-items:center;cursor:pointer;transition:.15s}
+.card:hover{transform:translateY(-2px)}.card.done{opacity:.55;background:#F7FCFF}
+.code{font-weight:700}.exp{margin-top:12px;font-size:12px;color:#C9892A}
+.toast{position:fixed;left:50%;top:20px;transform:translateX(-50%);background:#58AEE8;color:#fff;padding:10px 18px;border-radius:999px;opacity:0;transition:.25s}
+.toast.show{opacity:1;top:34px}
+.finish{text-align:center;margin:18px 0;color:#59AFE8;font-weight:700}
 </style>
-</head>
-
-<body>
-
-<div class="toast" id="toast">
-✅ コピーしました！
-</div>
-
+</head><body>
+<div class="toast" id="toast">✅ コピーしました！</div>
 <div class="container">
-
 <h1>🎁 Redeem Codes</h1>
+<div class="sub">タップするだけでコピーできます</div>
 
-<div class="subtitle">
-タップするだけでコピーできます
+<div class="panel">
+<div class="row">
+<div class="selectwrap">
+<select id="sort">
+<option value="added">🩵 新着順</option>
+<option value="expires">⏰期限順</option>
+</select>
+</div>
+</div>
+<div class="row">
+<div class="count" id="count"></div>
+<label><input type="checkbox" id="hide"> 入力済みを隠す</label>
+</div>
 </div>
 
-<div class="expire">
-現在有効な交換コードがありません
-</div>
-
-<div id="content"></div>
-
-<div class="footer">
-Made with 🩵 for Heartopia Players
-</div>
-
+<div id="finish" class="finish" style="display:none;">🎉 すべて入力済み！</div>
+<div class="grid" id="grid"></div>
 </div>
 
 <script>
-
-const july27Codes = [
-    ""
+const data=[
+{code:"m9a3q7k2r5n4",expires:"2026-10-01T00:59",added:"2026-08-03"},
+{code:"test2",expires:"2026-08-01T00:59",added:"2026-07-09"}
 ];
 
-const july25Codes = [
-    ""
-];
+const KEY = "claimedCodesV2";
+let claimed = JSON.parse(localStorage.getItem(KEY) || "[]");
 
-const codes = [
+const grid = document.getElementById("grid");
+const sort = document.getElementById("sort");
+const hide = document.getElementById("hide");
+const count = document.getElementById("count");
+const finish = document.getElementById("finish");
 
-];
-
-const content = document.getElementById("content");
-
-function addDivider(){
-
-    const divider = document.createElement("hr");
-    divider.className = "divider";
-    content.appendChild(divider);
-
+function toast() {
+  let t = document.getElementById("toast");
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 1500);
 }
 
-function createSection(title, list){
+function save() {
+  localStorage.setItem(KEY, JSON.stringify(claimed));
+}
 
-    if(list.length === 0) return;
+function render() {
+  const now = new Date();
+  // 期限切れ自動除外
+  const active = data.filter(x => new Date(x.expires) > now);
+  let arr = [...active];
 
-    const section = document.createElement("section");
-    section.className = "section";
-
-    if(title){
-
-        const heading = document.createElement("div");
-        heading.className = "section-title";
-        heading.textContent = title;
-        section.appendChild(heading);
-
-    }
-
-    const grid = document.createElement("div");
-    grid.className = "grid";
-
-    list.forEach(code=>{
-
-        const card=document.createElement("div");
-        card.className="card";
-
-        card.innerHTML=`<div class="code">${code}</div>`;
-
-        card.onclick=async()=>{
-
-            await navigator.clipboard.writeText(code);
-
-            const toast=document.getElementById("toast");
-
-            toast.classList.add("show");
-
-            setTimeout(()=>{
-                toast.classList.remove("show");
-            },1500);
-
-        };
-
-        grid.appendChild(card);
-
+  // ソート処理
+  const s = sort.value;
+  if (s === "expires") {
+    arr.sort((a, b) => new Date(a.expires) - new Date(b.expires));
+  } else if (s === "added") {
+    arr.sort((a, b) => {
+      const dateDiff = b.added.localeCompare(a.added);
+      if (dateDiff !== 0) return dateDiff;
+      return new Date(a.expires) - new Date(b.expires);
     });
+  }
 
-    section.appendChild(grid);
+  // 入力済みを隠す
+  if (hide.checked) {
+    arr = arr.filter(x => !claimed.includes(x.code));
+  }
 
-    content.appendChild(section);
+  grid.innerHTML = "";
+  arr.forEach(x => {
+    const c = document.createElement("div");
+    const isDone = claimed.includes(x.code);
+    c.className = "card" + (isDone ? " done" : "");
 
+    const d = new Date(x.expires);
+    const month = d.getMonth() + 1;
+    const date = d.getDate();
+    const hours = String(d.getHours()).padStart(2, "0");
+    const minutes = String(d.getMinutes()).padStart(2, "0");
+    
+    const showYear = d.getFullYear() !== now.getFullYear() ? `${d.getFullYear()}/` : "";
+    const expireText = `${showYear}${month}/${date} ${hours}:${minutes}`;
+
+    c.innerHTML = `
+      <div class="code">${isDone ? "✓ " : ""}${x.code}</div>
+      <div class="exp">${expireText}まで</div>
+    `;
+
+    c.onclick = async () => {
+      await navigator.clipboard.writeText(x.code);
+      toast();
+      if (!claimed.includes(x.code)) {
+        claimed.push(x.code);
+        save();
+      }
+      render();
+    };
+
+    grid.appendChild(c);
+  });
+
+  const claimedActive = claimed.filter(code => active.some(x => x.code === code)).length;
+  count.textContent = `入力済み ${claimedActive}/${active.length}`;
+
+  finish.style.display = (claimedActive === active.length && active.length > 0) ? "block" : "none";
 }
 
+sort.onchange = render;
+hide.onchange = render;
+render();
 </script>
-
-</body>
-</html>
+</body></html>
